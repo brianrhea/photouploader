@@ -1,34 +1,33 @@
 /*jshint esversion: 6 */
 
 inp.onchange = e => {
-  Promise.all([...inp.files].map(toThumbnail))
-    .then(function(imgs){
-      $(imgs).each(function(index, img){
-
-        var col = document.createElement('div');
-        col.classList = "col-3";
-
-        var thumbnail = document.createElement('div');
-        thumbnail.classList = "thumbnail position-relative";
-
-        var thumbnailOverlay = document.createElement('div');
-        thumbnailOverlay.classList = "thumbnail-overlay py-1 px-3 d-flex justify-content-between position-absolute";
-
-        const icons = "<i class='material-icons rotate-btn'>rotate_right</i><i class='material-icons cover-btn'>image</i><i class='material-icons must-see-btn'>flash_on</i>";
-
-        $(thumbnailOverlay).append(icons);
-
-        col.appendChild(thumbnail);
-        thumbnail.appendChild(thumbnailOverlay);
-        thumbnail.appendChild(img);
-
-        $('.gallery').append(col);
-
-      });
-    })
-    // .then(imgs => document.body.append.apply(document.body, imgs.filter(v => v)))
-    .catch(console.error);
+  for (let i = 0; i < inp.files.length; i++) {
+    toThumbnail(inp.files[i])
+      .then(img => createThumbnail(img))
+      .catch(console.error);
+  }
 };
+
+function createThumbnail(img) {
+  var col = document.createElement('div');
+  col.classList = "col-3";
+
+  var thumbnail = document.createElement('div');
+  thumbnail.classList = "thumbnail position-relative";
+
+  var thumbnailOverlay = document.createElement('div');
+  thumbnailOverlay.classList = "thumbnail-overlay py-1 px-3 d-flex justify-content-between position-absolute";
+
+  const icons = "<i class='material-icons rotate-btn'>rotate_right</i><i class='material-icons cover-btn'>image</i><i class='material-icons must-see-btn'>flash_on</i>";
+
+  $(thumbnailOverlay).append(icons);
+
+  col.appendChild(thumbnail);
+  thumbnail.appendChild(thumbnailOverlay);
+  thumbnail.appendChild(img);
+
+  $('.gallery').append(col);
+}
 
 function toThumbnail(file) {
   return loadImage(file)
