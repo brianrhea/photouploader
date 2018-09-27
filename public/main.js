@@ -64,3 +64,23 @@ function drawToCanvas(img) {
   canvas.getContext('2d').drawImage(img, 0, 0, w, h);
   return canvas;
 }
+
+const processImages = {};
+
+function collectImageData() {
+  $('canvas').each(function(index, el){
+    var filename = $(el).data('filename');
+    processImages[filename] = {
+      "cover": $(el).data('cover'),
+      "rotation": $(el).data('rotation'),
+      "mustSee": $(el).data('mustSee'),
+    };
+  });
+
+  console.log(processImages);
+
+}
+
+$('#upload').on('click', function(){
+  collectImageData();
+});
