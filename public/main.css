@@ -7,4 +7,13 @@ body {
     left: 0;
     right: 0;
     background-color: rgba(255,255,255,0.5);
+    z-index: 1;
+}
+
+.thumbnail-overlay .material-icons {
+    cursor: pointer;
+}
+
+.highlighted {
+    color: #0079ff;
 }
