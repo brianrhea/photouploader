@@ -14,7 +14,7 @@ inp.onchange = e => {
         var thumbnailOverlay = document.createElement('div');
         thumbnailOverlay.classList = "thumbnail-overlay py-1 px-3 d-flex justify-content-between position-absolute";
 
-        const icons = "<i class='material-icons'>rotate_right</i><i class='material-icons'>image</i><i class='material-icons'>flash_on</i>";
+        const icons = "<i class='material-icons rotate-btn'>rotate_right</i><i class='material-icons cover-btn'>image</i><i class='material-icons must-see-btn'>flash_on</i>";
 
         $(thumbnailOverlay).append(icons);
 
@@ -64,3 +64,89 @@ function drawToCanvas(img) {
   canvas.getContext('2d').drawImage(img, 0, 0, w, h);
   return canvas;
 }
+
+$(function () {
+  var gallery = $('.gallery');
+
+  /////////////////////////////////////////////////
+  // HANDLE ROTATION
+  /////////////////////////////////////////////////
+  gallery.on('click', '.rotate-btn', function (event) {
+    var canvas = $(event.target)
+      .closest('.thumbnail')
+      .find('canvas');
+
+    var rotation = +canvas.attr('data-rotation');
+    if (rotation < 260) {
+      rotation += 90;
+    } else {
+      rotation = 0;
+    }
+
+    // update preview
+    var rotateValue = 'rotate(' + rotation + 'deg)';
+    canvas.css({
+      '-webkit-transform': rotateValue,
+      '-moz-transform': rotateValue,
+      '-o-transform': rotateValue,
+      '-ms-transform': rotateValue,
+      'transform': rotateValue
+    });
+
+    // update metadata
+    canvas.attr('data-rotation', rotation);
+  });
+
+  /////////////////////////////////////////////////
+  // HANDLE COVER
+  /////////////////////////////////////////////////
+  gallery.on('click', '.cover-btn', function (event) {
+    var canvas = $(event.target)
+      .closest('.thumbnail')
+      .find('canvas');
+
+    var cover = (canvas.attr('data-cover') === 'true');
+
+    if (!cover) {
+      // since cover must be only one
+      // find current cover (if exist) and disable it
+      var currentCover = $('.cover-btn.highlighted');
+      if (currentCover.length) {
+        currentCover.removeClass('highlighted');
+        currentCover
+          .closest('.thumbnail')
+          .find('canvas')
+          .attr('data-cover', false);
+      }
+    }
+
+    // toggle value
+    cover = !cover;
+
+    // update preview
+    event.target.classList.toggle('highlighted', cover);
+
+    // update metadata
+    canvas.attr('data-cover', cover);
+  });
+
+  /////////////////////////////////////////////////
+  // HANDLE MUST-SEE
+  /////////////////////////////////////////////////
+  gallery.on('click', '.must-see-btn', function (event) {
+    var canvas = $(event.target)
+      .closest('.thumbnail')
+      .find('canvas');
+
+    var mustSee = (canvas.attr('data-mustSee') === 'true');
+
+    // toggle value
+    mustSee = !mustSee;
+
+    // update preview
+    event.target.classList.toggle('highlighted', mustSee);
+
+    // update metadata
+    canvas.attr('data-mustSee', mustSee);
+  });
+});
