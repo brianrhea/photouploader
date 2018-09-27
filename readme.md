@@ -18,4 +18,4 @@ Then issue the following command to run the server:
 npm start
 ```
 
-Navigate to http://localhost:8080/ and files from the public folder will start being served.
+Navigate to http://localhost:8000/ and files from the public folder will start being served.
