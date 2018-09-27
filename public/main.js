@@ -65,6 +65,26 @@ function drawToCanvas(img) {
   return canvas;
 }
 
+const processImages = {};
+
+function collectImageData() {
+  $('canvas').each(function(index, el){
+    var filename = $(el).data('filename');
+    processImages[filename] = {
+      "cover": $(el).data('cover'),
+      "rotation": $(el).data('rotation'),
+      "mustSee": $(el).data('mustSee'),
+    };
+  });
+
+  console.log(processImages);
+
+}
+
+$('#upload').on('click', function(){
+  collectImageData();
+});
+
 $(function () {
   var gallery = $('.gallery');
 
