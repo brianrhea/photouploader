@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Simple static nodejs server boilerplate</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <link rel="stylesheet" href="../main.css">
+
+        <script>
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+        ':35729/livereload.js?snipver=1"></' + 'script>');
+        </script>
+
+    </head>
+    <body>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col d-flex justify-content-start">
+                    <input type="file" multiple accepts="image/*" id="inp">
+                </div>
+                <div class="col d-flex justify-content-end align-items-center">
+                    Simultaneous Uploads
+                    <input class="ml-1 text-center" size="2" type="text">
+                    <button class="ml-2 btn btn-primary">Upload</button>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-3">
+                    <div class="thumbnail position-relative">
+                        <div class="thumbnail-overlay py-1 px-3 d-flex justify-content-between position-absolute">
+                            <i class="material-icons">rotate_right</i>
+                            <i class="material-icons">image</i>
+                            <i class="material-icons">flash_on</i>
+                        </div>
+                        <img src="../example.jpg" width="210" height="133" data-filename="DSC_0096.JPG" data-rotation="0" data-mustsee="false" data-cover="false" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col">
+                    <div class="gallery"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="../main.js"></script>
+
+    </body>
+</html>

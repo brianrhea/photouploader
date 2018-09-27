@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-static-file-server-boilerplate",
+  "version": "0.0.1",
+  "description": "A simple boilerplate to easily get started with a nodejs static file server.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/http-server -a localhost -p 8000 -c-1"
+  },
+  "dependencies": {
+    "node-static": "0.6.x"
+  }
+}
