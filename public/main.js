@@ -4,8 +4,26 @@ inp.onchange = e => {
   Promise.all([...inp.files].map(toThumbnail))
     .then(function(imgs){
       $(imgs).each(function(index, img){
-        console.log("img", img);
-        $('.gallery').append(img);
+
+        var col = document.createElement('div');
+        col.classList = "col-3";
+
+        var thumbnail = document.createElement('div');
+        thumbnail.classList = "thumbnail position-relative";
+
+        var thumbnailOverlay = document.createElement('div');
+        thumbnailOverlay.classList = "thumbnail-overlay py-1 px-3 d-flex justify-content-between position-absolute";
+
+        const icons = "<i class='material-icons'>rotate_right</i><i class='material-icons'>image</i><i class='material-icons'>flash_on</i>";
+
+        $(thumbnailOverlay).append(icons);
+
+        col.appendChild(thumbnail);
+        thumbnail.appendChild(thumbnailOverlay);
+        thumbnail.appendChild(img);
+
+        $('.gallery').append(col);
+
       });
     })
     // .then(imgs => document.body.append.apply(document.body, imgs.filter(v => v)))
