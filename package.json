@@ -8,6 +8,7 @@
     "start": "./node_modules/.bin/http-server -a localhost -p 8000 -c-1"
   },
   "dependencies": {
-    "node-static": "0.6.x"
+    "node-static": "0.6.x",
+    "http-server": "0.11.1"
   }
 }
