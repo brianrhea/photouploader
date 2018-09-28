@@ -20,15 +20,35 @@
     </head>
     <body>
 
-        <div class="container mt-5">
+        <div class="container mt-5" id="container">
             <div class="row">
                 <div class="col d-flex justify-content-start">
                     <input type="file" multiple accepts="image/*" id="inp">
                 </div>
                 <div class="col d-flex justify-content-end align-items-center">
                     Simultaneous Uploads
-                    <input class="ml-1 text-center" size="2" type="text">
+                    <input class="ml-1 text-center" id="throttle" size="2" type="text">
                     <button class="ml-2 btn btn-primary" id="upload">Upload</button>
+                </div>
+
+            </div>
+            <hr />
+            <div class="row pagination-row">
+                <div class="col">
+                    Items per page
+                    <select id="pagination-dropdown">
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option>
+                        <option>100</option>
+                        <option>250</option>
+                        <option>500</option>
+                    </select>
+
+                    <nav aria-label="Pages">
+                        <ul class="pagination justify-content-center">
+                        </ul>
+                    </nav>
                 </div>
             </div>
             <div class="row mt-5 gallery">
